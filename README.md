@@ -50,25 +50,26 @@ func main() {
 
 ```go
 type ParseResult struct {
-    Type       PlaylistType  // master / media
-    URI        string        // 原始地址
-    Version    int           // EXT-X-VERSION
-    TargetDuration int       // EXT-X-TARGETDURATION
-    Segments   []Segment    // 媒体分片列表（Media Playlist 用）
-    Variants   []Variant    // 多码率列表（Master Playlist 用）
-    Encryption *Encryption // 加密信息
+	Type       PlaylistType // master 或 media
+	URI        string       // 原始地址
+	Version    int          // EXT-X-VERSION
+	TargetDuration int      // EXT-X-TARGETDURATION
+	Segments   []Segment    // 媒体分片列表
+	Variants   []Variant    // 多码率列表（仅master）
+	Encryption *Encryption // 加密信息
 }
 ```
 
 #### Variant - 码率变体
 
 ```go
+// Variant 码率变体（master playlist）
 type Variant struct {
-    Bandwidth  int        // 带宽 (bps)
-    Resolution string     // 分辨率 (如 "1280x720")
-    URI        string     // 媒体播放列表地址
-    Codecs     string     // 编解码器信息
-    Segments   []Segment  // 该码率对应的分片列表
+	Bandwidth  int        // 带宽 (bps)
+	Resolution string     // 分辨率
+	URI        string     // 媒体播放列表地址
+	Codecs     string     // 编解码器信息
+	Segments   []Segment  // 该码率对应的分片列表
 }
 ```
 
