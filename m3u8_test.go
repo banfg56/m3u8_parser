@@ -1,4 +1,4 @@
-package m3u8
+package m3u8_parser
 
 import (
 	"testing"
@@ -187,9 +187,9 @@ playlist_1080p.m3u8`
 
 func TestResolveURL(t *testing.T) {
 	tests := []struct {
-		baseURL    string
-		relative  string
-		expected  string
+		baseURL  string
+		relative string
+		expected string
 	}{
 		{"https://example.com/video/", "segment1.ts", "https://example.com/video/segment1.ts"},
 		{"https://example.com/video/", "/segment1.ts", "https://example.com/segment1.ts"},
@@ -207,9 +207,9 @@ func TestResolveURL(t *testing.T) {
 
 func TestExtractString(t *testing.T) {
 	tests := []struct {
-		line      string
-		key       string
-		expected  string
+		line     string
+		key      string
+		expected string
 	}{
 		{`#EXT-X-KEY:METHOD=AES-128,URI="https://example.com/key"`, "URI", "https://example.com/key"},
 		{`#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=720x480`, "RESOLUTION", "720x480"},
