@@ -14,7 +14,7 @@
 ## 安装
 
 ```bash
-go get https://github.com/banfg56/m3u8_parser
+go get github.com/banfg56/m3u8_parser
 ```
 
 ## 快速开始
@@ -22,7 +22,7 @@ go get https://github.com/banfg56/m3u8_parser
 ### 作为库引入
 
 ```go
-import m3u8 "https://github.com/banfg56/m3u8_parser"
+import m3u8 "github.com/banfg56/m3u8_parser"
 
 func main() {
     parser := m3u8.New()
