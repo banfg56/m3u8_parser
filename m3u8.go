@@ -320,6 +320,8 @@ func resolveURL(baseURL, relativeURL string) string {
 		if idx := strings.IndexByte(relativeURL, '?'); idx >= 0 {
 			u.RawQuery = relativeURL[idx+1:]
 			u.Path = relativeURL[:idx]
+		} else {
+			u.Path = relativeURL
 		}
 		return u.String()
 	}
