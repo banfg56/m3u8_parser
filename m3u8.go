@@ -317,7 +317,10 @@ func resolveURL(baseURL, relativeURL string) string {
 	// 绝对路径
 	if strings.HasPrefix(relativeURL, "/") {
 		u, _ := url.Parse(baseURL)
-		u.RawPath = relativeURL
+		if idx := strings.IndexByte(relativeURL, '?'); idx >= 0 {
+			u.RawQuery = relativeURL[idx+1:]
+			u.Path = relativeURL[:idx]
+		}
 		return u.String()
 	}
 
